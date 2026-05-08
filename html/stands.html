@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SportZone - Stats</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Bebas+Neue&family=Barlow:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="bg-[#0A0A0A] text-white">
+
+ 
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-[rgba(10,10,10,0.98)] border-b border-[#242424] text-white">
+    <div class="h-[68px] flex items-center justify-between px-5 md:px-10">
+      <div class="text-[22px] md:text-[28px] tracking-[5px] font-bold">
+        SPORT<span class="text-[#2ECC52]">ZONE</span>
+      </div>
+      <ul class="hidden md:flex items-center gap-8 list-none">
+        <li><a href="../index.html" class="text-[#666] hover:text-[#2ECC52] font-bold uppercase text-sm transition-colors">Home</a></li>
+        <li><a href="../html/Live.html" class="text-[#666] hover:text-[#2ECC52] font-bold uppercase text-sm transition-colors">Live</a></li>
+        <li><a href="../html/standing.html" class="text-[#666] hover:text-[#2ECC52] font-bold uppercase text-sm transition-colors">Standings</a></li>
+        <li><a href="../html/stands.html" class="text-[#2ECC52] bg-[rgba(46,204,82,0.1)] px-4 py-2 rounded-md font-bold uppercase text-sm">Stats</a></li>
+      </ul>
+      <div class="flex items-center gap-3">
+        <div class="flex items-center gap-1 bg-[#161616] border border-[#242424] rounded-full px-3 py-1 text-sm text-[#666]">
+          <img src="#" alt="icon" id="WeIcon" class="h-7">
+          <span class="text-[#2ECC52] font-bold text-[13px]" id="weatherDeg">22°</span>
+          <span id="weatherCity" class="text-[13px] hidden sm:inline">Cairo</span>
+        </div>
+        <button class="md:hidden flex flex-col gap-[5px] p-2" onclick="toggleMenu()">
+          <span class="w-5 h-[2px] bg-white rounded transition-all" id="hb1"></span>
+          <span class="w-5 h-[2px] bg-white rounded transition-all" id="hb2"></span>
+          <span class="w-5 h-[2px] bg-white rounded transition-all" id="hb3"></span>
+        </button>
+      </div>
+    </div>
+    <div id="mobileMenu" class="flex-col bg-[#0f0f0f] border-t border-[#242424] px-5 py-4 gap-3 md:hidden">
+      <a href="../index.html" class="text-[#666] font-bold uppercase text-sm py-2 border-b border-[#242424]">Home</a>
+      <a href="../html/Live.html" class="text-[#666] font-bold uppercase text-sm py-2 border-b border-[#242424]">Live</a>
+      <a href="../html/standing.html" class="text-[#666] font-bold uppercase text-sm py-2 border-b border-[#242424]">Standings</a>
+      <a href="../html/stands.html" class="text-[#2ECC52] font-bold uppercase text-sm py-2">Stats</a>
+    </div>
+  </nav>
+
+  <div class="pt-[80px] min-h-screen px-4 md:px-10 py-8 md:py-12">
+
+    <div class="flex items-center gap-2 text-[11px] font-extrabold tracking-[3px] text-[#2ECC52] uppercase mb-2">
+      <span class="w-6 h-[3px] bg-[#2ECC52] rounded"></span>
+      Numbers
+    </div>
+    <div class="font-['Oswald'] text-[28px] md:text-[40px] font-bold uppercase leading-tight mb-5">
+      Player Statistics
+    </div>
+
+    
+    <div class="flex items-center gap-2 mb-5 flex-wrap">
+      <span class="text-[11px] text-[#666] font-bold uppercase tracking-wide">Sort by:</span>
+      <button onclick="setSortMode('goals')" id="sortGoals"
+              class="sort-btn bg-[rgba(46,204,82,0.1)] border border-[#2ECC52] text-[#2ECC52]
+                     px-3 py-1.5 rounded-lg text-[12px] font-bold uppercase tracking-wide cursor-pointer transition-all">
+        ⚽ Goals
+      </button>
+      <button onclick="setSortMode('yellow')" id="sortYellow"
+              class="sort-btn bg-[#161616] border border-[#242424] text-[#666]
+                     px-3 py-1.5 rounded-lg text-[12px] font-bold uppercase tracking-wide cursor-pointer transition-all">
+        🟨 Yellow
+      </button>
+      <button onclick="setSortMode('red')" id="sortRed"
+              class="sort-btn bg-[#161616] border border-[#242424] text-[#666]
+                     px-3 py-1.5 rounded-lg text-[12px] font-bold uppercase tracking-wide cursor-pointer transition-all">
+        🟥 Red
+      </button>
+    </div>
+
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+     
+      <div class="bg-[#161616] border border-[#242424] rounded-[14px] overflow-hidden">
+        <div class="flex items-center gap-2.5 px-5 py-4 border-b border-[#242424]"
+             style="background:linear-gradient(90deg,rgba(46,204,82,0.08),transparent)">
+          <span class="text-[18px]">⚽</span>
+          <span class="font-['Oswald'] text-[16px] md:text-[18px] font-bold tracking-[2px] uppercase">Top Scorers</span>
+          <div class="ml-auto flex gap-2 text-[10px] text-[#666] font-extrabold tracking-wide">
+            <span class="min-w-[30px] text-center text-[#2ECC52]">G</span>
+            <span class="min-w-[30px] text-center text-[#F4A01C]">Y</span>
+            <span class="min-w-[30px] text-center text-[#E63946]">R</span>
+          </div>
+        </div>
+        <div id="scorersContainer"></div>
+      </div>
+
+      
+      <div class="bg-[#161616] border border-[#242424] rounded-[14px] overflow-hidden">
+        <div class="flex items-center gap-2.5 px-5 py-4 border-b border-[#242424]"
+             style="background:linear-gradient(90deg,rgba(46,204,82,0.08),transparent)">
+          <span class="text-[18px]">🟨</span>
+          <span class="font-['Oswald'] text-[16px] md:text-[18px] font-bold tracking-[2px] uppercase">Cards</span>
+          <div class="ml-auto flex gap-2 text-[10px] text-[#666] font-extrabold tracking-wide">
+            <span class="min-w-[36px] text-center text-[#F4A01C]">Y</span>
+            <span class="min-w-[36px] text-center text-[#E63946]">R</span>
+          </div>
+        </div>
+        <div id="cardsContainer"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="bg-[#080808] border-t border-[#242424] px-5 md:px-10 py-5 flex flex-col md:flex-row justify-between items-center gap-2 text-[12px] text-[#666] text-center">
+    <div class="font-['Bebas_Neue'] text-[20px] tracking-[4px]">SPORT<span class="text-[#2ECC52]">ZONE</span></div>
+    <div>© 2026 SportZone. All rights reserved.</div>
+    <div>Made for sport lovers ⚽</div>
+  </footer>
+
+  <script src="../scripts/menue.js"></script>
+  <script src="../scripts/whether.js"></script>
+  <script src="../scripts/stands.js"></script>
+</body>
+</html>

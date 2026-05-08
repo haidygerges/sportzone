@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SportZone - Live</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Bebas+Neue&family=Barlow:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="bg-[#0A0A0A] text-white">
+
+  
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-[rgba(10,10,10,0.98)] border-b border-[#242424] text-white">
+    <div class="h-[68px] flex items-center justify-between px-5 md:px-10">
+      <div class="text-[22px] md:text-[28px] tracking-[5px] font-bold">
+        SPORT<span class="text-[#2ECC52]">ZONE</span>
+      </div>
+      <ul class="hidden md:flex items-center gap-8 list-none">
+        <li><a href="../index.html" class="text-[#666] hover:text-[#2ECC52] font-bold uppercase text-sm transition-colors">Home</a></li>
+        <li><a href="../html/Live.html" class="text-[#2ECC52] bg-[rgba(46,204,82,0.1)] px-4 py-2 rounded-md font-bold uppercase text-sm">Live</a></li>
+        <li><a href="../html/standing.html" class="text-[#666] hover:text-[#2ECC52] font-bold uppercase text-sm transition-colors">Standings</a></li>
+        <li><a href="../html/stands.html" class="text-[#666] hover:text-[#2ECC52] font-bold uppercase text-sm transition-colors">Stats</a></li>
+      </ul>
+      <div class="flex items-center gap-3">
+        <div class="flex items-center gap-1 bg-[#161616] border border-[#242424] rounded-full px-3 py-1 text-sm text-[#666]">
+          <img src="#" alt="icon" id="WeIcon" class="h-7">
+          <span class="text-[#2ECC52] font-bold text-[13px]" id="weatherDeg">22°</span>
+          <span id="weatherCity" class="text-[13px] hidden sm:inline">Cairo</span>
+        </div>
+        <button id="hamburgerBtn" class="md:hidden flex flex-col gap-[5px] p-2" onclick="toggleMenu()">
+          <span class="w-5 h-[2px] bg-white rounded transition-all" id="hb1"></span>
+          <span class="w-5 h-[2px] bg-white rounded transition-all" id="hb2"></span>
+          <span class="w-5 h-[2px] bg-white rounded transition-all" id="hb3"></span>
+        </button>
+      </div>
+    </div>
+    <div id="mobileMenu" class="flex-col bg-[#0f0f0f] border-t border-[#242424] px-5 py-4 gap-3 md:hidden">
+      <a href="../index.html" class="text-[#666] font-bold uppercase text-sm py-2 border-b border-[#242424]">Home</a>
+      <a href="../html/Live.html" class="text-[#2ECC52] font-bold uppercase text-sm py-2 border-b border-[#242424]">Live</a>
+      <a href="../html/standing.html" class="text-[#666] font-bold uppercase text-sm py-2 border-b border-[#242424]">Standings</a>
+      <a href="../html/stands.html" class="text-[#666] font-bold uppercase text-sm py-2">Stats</a>
+    </div>
+  </nav>
+
+  <div class="pt-[68px] min-h-screen">
+
+    
+    <div class="px-5 md:px-10 pt-10 pb-6" style="background:linear-gradient(180deg,rgba(46,204,82,0.04) 0%,transparent 100%)">
+      <div class="flex items-center gap-2 text-[11px] font-extrabold tracking-[3px] text-[#2ECC52] uppercase mb-2">
+        <span class="w-6 h-[3px] bg-[#2ECC52] rounded"></span>
+        Live Scores
+      </div>
+      <div class="font-['Oswald'] text-[28px] md:text-[40px] font-bold uppercase leading-tight">
+        Live & Upcoming
+      </div>
+    </div>
+
+    
+    <div class="mx-4 md:mx-10 mb-6 bg-[#161616] border border-[#242424] rounded-[10px] px-4 py-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        
+        <div class="flex flex-col gap-1">
+          <label class="text-[11px] text-[#666] font-bold uppercase tracking-wide">League</label>
+          <select id="leagueSelect"
+                  class="bg-[#111] border border-[#242424] rounded-lg px-3 py-2 text-white text-sm
+                         focus:outline-none focus:border-[#2ECC52] transition-colors">
+            <option value="152">🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier League</option>
+            <option value="302">🇪🇸 La Liga</option>
+            <option value="207">🇮🇹 Serie A</option>
+            <option value="175">🇩🇪 Bundesliga</option>
+            <option value="168">🇫🇷 Ligue 1</option>
+            <option value="233">🇪🇬 Egyptian Premier</option>
+          </select>
+        </div>
+        
+        <div class="flex flex-col gap-1">
+          <label class="text-[11px] text-[#666] font-bold uppercase tracking-wide">Team</label>
+          <input type="text" id="teamFilter" placeholder="e.g. Arsenal..."
+                 class="bg-[#111] border border-[#242424] rounded-lg px-3 py-2 text-white text-sm
+                        focus:outline-none focus:border-[#2ECC52] transition-colors">
+        </div>
+        
+        <div class="flex flex-col gap-1">
+          <label class="text-[11px] text-[#666] font-bold uppercase tracking-wide">From</label>
+          <input type="date" id="fromDate"
+                 class="bg-[#111] border border-[#242424] rounded-lg px-3 py-2 text-white text-sm
+                        focus:outline-none focus:border-[#2ECC52] transition-colors">
+        </div>
+        
+        <div class="flex flex-col gap-1">
+          <label class="text-[11px] text-[#666] font-bold uppercase tracking-wide">To</label>
+          <input type="date" id="toDate"
+                 class="bg-[#111] border border-[#242424] rounded-lg px-3 py-2 text-white text-sm
+                        focus:outline-none focus:border-[#2ECC52] transition-colors">
+        </div>
+      </div>
+      <button class="mt-3 w-full bg-[#2ECC52] text-black font-extrabold text-[13px] uppercase tracking-wide
+                     py-2.5 rounded-lg hover:bg-[#26b347] transition-colors cursor-pointer" id="searchBtn">
+        Search
+      </button>
+    </div>
+
+    
+    <div class="px-4 md:px-10 pb-16 flex flex-col gap-3" id="matchesContainer"></div>
+  </div>
+
+  <footer class="bg-[#080808] border-t border-[#242424] px-5 md:px-10 py-5 flex flex-col md:flex-row justify-between items-center gap-2 text-[12px] text-[#666] text-center">
+    <div class="font-['Bebas_Neue'] text-[20px] tracking-[4px]">SPORT<span class="text-[#2ECC52]">ZONE</span></div>
+    <div>© 2026 SportZone. All rights reserved.</div>
+    <div>Made for sport lovers ⚽</div>
+  </footer>
+
+  <script src="../scripts/menue.js"></script>
+  <script src="../scripts/whether.js"></script>
+  <script src="../scripts/live.js"></script>
+</body>
+</html>

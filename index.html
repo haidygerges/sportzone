@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sports News</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Bebas+Neue&family=Barlow:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body class="bg-[#0A0A0A] text-white">
+
+  
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-[rgba(10,10,10,0.98)] border-b border-[#242424] text-white">
+    <div class="h-[68px] flex items-center justify-between px-5 md:px-10">
+
+      
+      <div class="text-[22px] md:text-[28px] tracking-[5px] font-bold">
+        SPORT<span class="text-[#2ECC52]">ZONE</span>
+      </div>
+
+      
+      <ul class="hidden md:flex items-center gap-8 list-none">
+        <li><a href="./index.html" class="text-[#2ECC52] bg-[rgba(46,204,82,0.1)] px-4 py-2 rounded-md font-bold uppercase text-sm">Home</a></li>
+        <li><a href="./html/Live.html" class="text-[#666] hover:text-[#2ECC52] font-bold uppercase text-sm transition-colors">Live</a></li>
+        <li><a href="./html/standing.html" class="text-[#666] hover:text-[#2ECC52] font-bold uppercase text-sm transition-colors">Standings</a></li>
+        <li><a href="./html/stands.html" class="text-[#666] hover:text-[#2ECC52] font-bold uppercase text-sm transition-colors">Stats</a></li>
+      </ul>
+
+      
+      <div class="flex items-center gap-3">
+        <div class="flex items-center gap-1 bg-[#161616] border border-[#242424] rounded-full px-3 py-1 text-sm text-[#666]">
+          <img src="#" alt="icon" id="WeIcon" class="h-7">
+          <span class="text-[#2ECC52] font-bold text-[13px]" id="weatherDeg">22°</span>
+          <span id="weatherCity" class="text-[13px] hidden sm:inline">Cairo</span>
+        </div>
+        
+        <button id="hamburgerBtn" class="md:hidden flex flex-col gap-[5px] p-2" onclick="toggleMenu()">
+          <span class="w-5 h-[2px] bg-white rounded transition-all" id="hb1"></span>
+          <span class="w-5 h-[2px] bg-white rounded transition-all" id="hb2"></span>
+          <span class="w-5 h-[2px] bg-white rounded transition-all" id="hb3"></span>
+        </button>
+      </div>
+    </div>
+
+    
+    <div id="mobileMenu" class="flex-col bg-[#0f0f0f] border-t border-[#242424] px-5 py-4 gap-3 md:hidden">
+      <a href="./index.html" class="text-[#2ECC52] font-bold uppercase text-sm py-2 border-b border-[#242424]">Home</a>
+      <a href="./html/Live.html" class="text-[#666] font-bold uppercase text-sm py-2 border-b border-[#242424]">Live</a>
+      <a href="./html/standing.html" class="text-[#666] font-bold uppercase text-sm py-2 border-b border-[#242424]">Standings</a>
+      <a href="./html/stands.html" class="text-[#666] font-bold uppercase text-sm py-2">Stats</a>
+    </div>
+  </nav>
+
+  
+  <div class="pt-[68px]" id="pg-home">
+    
+    <div class="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-5 px-4 md:px-10 py-7 max-w-[1280px] mx-auto">
+
+      
+      <div>
+       <div class="flex items-center gap-2 font-['Oswald'] text-[13px] font-bold tracking-[2px] uppercase text-[#666] mb-3">
+          <span class="w-[3px] h-4 bg-[#2ECC52] rounded"></span>
+          Sports
+        </div>
+        <div id="sportsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 mb-7"></div>
+
+         <div class="flex items-center gap-2 font-['Oswald'] text-[13px] font-bold tracking-[2px] uppercase text-[#666] mb-3">
+          <span class="w-[3px] h-4 bg-[#2ECC52] rounded"></span>
+          Entertainment
+        </div>
+        <div id="entertainmentGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 mb-7"></div>
+
+        
+        <div class="flex items-center gap-2 font-['Oswald'] text-[13px] font-bold tracking-[2px] uppercase text-[#666] mb-3 mt-2">
+          <span class="w-[3px] h-4 bg-[#E63946] rounded"></span>
+          Politics
+        </div>
+       
+        <div id="politicsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 mb-7"></div>
+
+        <div class="flex items-center gap-2 font-['Oswald'] text-[13px] font-bold tracking-[2px] uppercase text-[#666] mb-3">
+          <span class="w-[3px] h-4 bg-[#F4A01C] rounded"></span>
+          Economy
+        </div>
+        <div id="economyGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 mb-7"></div>
+
+       
+
+
+      </div>
+
+     
+      <div>
+
+        
+        <div class="border border-[#242424] rounded-xl p-5 mb-4" style="background:linear-gradient(135deg,#0e1f10,#161616)">
+          <div class="flex items-start justify-between mb-4">
+            <div>
+              <div class="text-[13px] text-[#666] font-semibold mb-1" id="sidebarWeatherCity"></div>
+              <div class="font-['Bebas_Neue'] text-[52px] text-[#2ECC52] leading-none" id="sidebarWeatherDeg"></div>
+              <div class="text-[12px] text-[#666] mt-1" id="desc">Sunny</div>
+              <span id="felLike" class="text-[12px] text-[#aaa]">Feels like 24°</span>
+            </div>
+            <img src="#" alt="icon" id="sidebarWeIcon" class="h-20">
+          </div>
+          <div class="grid grid-cols-2 gap-2">
+            <div class="bg-white/[0.03] border border-[#242424] rounded-lg p-2">
+              <div class="text-[10px] text-[#666] font-bold uppercase tracking-wide">Humidity</div>
+              <div class="text-[14px] font-bold mt-1" id="Humidity">38%</div>
+            </div>
+            <div class="bg-white/[0.03] border border-[#242424] rounded-lg p-2">
+              <div class="text-[10px] text-[#666] font-bold uppercase tracking-wide">Wind</div>
+              <div class="text-[14px] font-bold mt-1" id="wind">12 km/h</div>
+            </div>
+            <div class="bg-white/[0.03] border border-[#242424] rounded-lg p-2">
+              <div class="text-[10px] text-[#666] font-bold uppercase tracking-wide">UV Index</div>
+              <div class="text-[14px] font-bold mt-1 text-[#F4A01C]">High</div>
+            </div>
+            <div class="bg-white/[0.03] border border-[#242424] rounded-lg p-2">
+              <div class="text-[10px] text-[#666] font-bold uppercase tracking-wide">Visibility</div>
+              <div class="text-[14px] font-bold mt-1" id="visabilty">10 km</div>
+            </div>
+          </div>
+        </div>
+
+        
+        <div class="bg-[#161616] border border-[#242424] rounded-xl p-[18px] mb-4">
+          <div class="font-['Oswald'] text-[13px] font-bold tracking-[1.5px] uppercase text-[#666] mb-3">Exchange Rates</div>
+          <div class="flex justify-between items-center py-2.5 border-b border-[#242424]">
+            <span class="text-[13px] font-semibold">USD To EGP</span>
+            <span class="font-['Oswald'] text-[20px] text-[#2ECC52]" id="usdRate">48.18</span>
+          </div>
+          <div class="flex justify-between items-center py-2.5 border-b border-[#242424]">
+            <span class="text-[13px] font-semibold">SAR To EGP</span>
+            <span class="font-['Oswald'] text-[20px] text-[#F4A01C]" id="sarRate">17.35</span>
+          </div>
+          <div class="flex justify-between items-center py-2.5 border-b border-[#242424]">
+            <span class="text-[13px] font-semibold">EUR To EGP</span>
+            <span class="font-['Oswald'] text-[20px] text-[#bbb]" id="eurRate">52.40</span>
+          </div>
+          <div class="flex justify-between items-center py-2.5">
+            <span class="text-[13px] font-semibold">GBP To EGP</span>
+            <span class="font-['Oswald'] text-[20px] text-[#bbb]" id="gbgRate">61.20</span>
+          </div>
+        </div>
+
+        
+        <div class="bg-[#161616] border border-[#242424] rounded-xl p-[18px] mb-4">
+          <div class="font-['Oswald'] text-[13px] font-bold tracking-[1.5px] uppercase text-[#666] mb-3">Currency Converter</div>
+          <input type="number" id="convertAmount" placeholder="Amount"
+                 class="w-full bg-[#111] border border-[#242424] rounded-lg px-3 py-2 text-white text-sm mb-2
+                        focus:outline-none focus:border-[#2ECC52] transition-colors" value="100">
+          <div class="flex gap-2 mb-2">
+            <select id="convertFrom"
+                    class="flex-1 bg-[#111] border border-[#242424] rounded-lg px-3 py-2 text-white text-sm
+                           focus:outline-none focus:border-[#2ECC52] transition-colors">
+              <option value="USD">USD</option>
+              <option value="EUR">EUR</option>
+              <option value="GBP">GBP</option>
+              <option value="SAR">SAR</option>
+              <option value="EGP">EGP</option>
+            </select>
+            <button onclick="swapCurrencies()"
+                    class="bg-[#242424] hover:bg-[#2ECC52] hover:text-black text-white px-3 rounded-lg transition-colors text-lg font-bold">
+              ⇄
+            </button>
+            <select id="convertTo"
+                    class="flex-1 bg-[#111] border border-[#242424] rounded-lg px-3 py-2 text-white text-sm
+                           focus:outline-none focus:border-[#2ECC52] transition-colors">
+              <option value="EGP" selected>EGP</option>
+              <option value="USD">USD</option>
+              <option value="EUR">EUR</option>
+              <option value="GBP">GBP</option>
+              <option value="SAR">SAR</option>
+            </select>
+          </div>
+          <button onclick="convertCurrency()"
+                  class="w-full bg-[#2ECC52] text-black font-extrabold text-[13px] uppercase tracking-wide
+                         py-2 rounded-lg hover:bg-[#26b347] transition-colors cursor-pointer mb-3">
+            Convert
+          </button>
+          <div id="convertResult" class="text-center font-['Oswald'] text-[20px] text-[#2ECC52] hidden"></div>
+        </div>
+
+        
+        <div class="bg-[#161616] border border-[#242424] rounded-xl p-[18px]">
+          <div class="flex justify-between items-center font-['Oswald'] text-[13px] font-bold tracking-[1.5px] uppercase text-[#666] mb-3">
+            Live Scores
+            <span class="flex items-center gap-1.5 text-[#E63946] text-[11px]">● On Air</span>
+          </div>
+          <div id="matchesContainer"></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  
+  <footer class="bg-[#080808] border-t border-[#242424] px-5 md:px-10 py-5 flex flex-col md:flex-row justify-between items-center gap-2 text-[12px] text-[#666] text-center">
+    <div class="font-['Bebas_Neue'] text-[20px] tracking-[4px]">SPORT<span class="text-[#2ECC52]">ZONE</span></div>
+    <div>© 2026 SportZone. All rights reserved.</div>
+    <div>Made for sport lovers ⚽</div>
+  </footer>
+
+  <script src="./scripts/menue.js"></script>
+  <script src="./scripts/whether.js"></script>
+  <script src="./scripts/home.js"></script>
+</body>
+</html>
