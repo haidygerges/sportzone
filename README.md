@@ -99,7 +99,7 @@ open home.html
 ```
 
 ### Option 2: Live Server (recommended for development)
-If you use VS Code, install the [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) extension and click **Go Live**.
+If you use VS Code, install the [Live Server](https://haidygerges.github.io/sportzone/) extension and click **Go Live**.
 
 ---
 
